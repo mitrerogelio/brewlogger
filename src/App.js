@@ -17,6 +17,8 @@ function App() {
         <Brewmethod img="https://coffeerem.com/wp-content/uploads/2020/03/BTBL9603-compressed-2048x2048.jpg"  name="Hario Switch" />
       </main>
 
+      <Record />
+      
       <Footer />
     </div>
   );
