@@ -1,26 +1,15 @@
 import React from 'react'
+import Log from './Log'
 
 const Record = () => {
   return (
-    <section className=''>
-        <h3>Previous Brews</h3>
-        <p>View your previous brews and select to see more data</p>
-        <div className="stats bg-primary text-primary-content">
-            <div className="stat">
-                <div className="stat-title">Brew Method</div>
-                <div className="stat-value">French Press</div>
-                <div className="stat-actions">
-                <button className="btn btn-sm btn-success">Add funds</button>
-                </div>
-            </div>
-            <div className="stat">
-                <div className="stat-title">Current balance</div>
-                <div className="stat-value">$89,400</div>
-                <div className="stat-actions">
-                <button className="btn btn-sm">Withdrawal</button> 
-                <button className="btn btn-sm">deposit</button>
-                </div>
-            </div>
+    <section className='my-24 py-20  bg-base-300'>
+        <h3 className='text-3xl font-bold text-center'>Previous Brews</h3>
+        <p className='py-6 text-center'>View your previous brews and select to see more data</p>
+        <div className='w-screen carousel carousel-center p-4 space-x-4 bg-neutral rounded-box'>
+            <Log />
+            <Log />
+            <Log />
         </div>
     </section>
   )
