@@ -1,7 +1,8 @@
 import React from 'react'
+import { brewMethods } from "./data"
 
 const Brewmethod = (props) => {
-   
+
     return (
         <article className='avatar h-32 m-3 flex flex-col justify-center'>
             <div className="w-28 rounded-full">
