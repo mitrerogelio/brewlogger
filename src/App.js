@@ -11,9 +11,7 @@ function App() {
       <main className='flex flex-row flex-wrap justify-evenly mt-24'>
         <Brewmethods />
       </main>
-
       <Record />
-      
       <Footer />
     </div>
   );
