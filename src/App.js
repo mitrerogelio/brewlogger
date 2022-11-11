@@ -1,20 +1,22 @@
-import Brewmethods from './components/Brewmethods';
-import Nav from './components/Nav';
-import Record from './components/Record';
-import Footer from './components/Footer';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom'
+import { Home } from './pages/Home';
+import { Brew } from './pages/Brew'
+import { Settings } from './pages/Settings'
+import { Profile } from './pages/Profile'
 
-function App() {
+
+export const App = () => {
   return (
     <div className="App">
-      <Nav />
-      <h1 className='text-center text-5xl font-bold w-3/5 mx-auto mt-20'>Prepare Your Coffee</h1>
-      <main className='flex flex-row flex-wrap justify-evenly mt-24'>
-        <Brewmethods />
-      </main>
-      <Record />
-      <Footer />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/brew/:brewer' element={<Brew />} />
+        <Route path='/settings' element={<Settings />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
