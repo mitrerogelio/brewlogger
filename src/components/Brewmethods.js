@@ -17,7 +17,7 @@ const Brewmethods = () => {
 
     return (
         brewers.map((brewer, key) => (
-            <Link to={brewer.id} key={key} exampleprop="deez nutz" className='cursor-pointer'>
+            <Link to={`/brew/${brewer.id}`} key={key} state={{data: brewer}} className='cursor-pointer'>
                 <article className='avatar h-32 m-3 flex flex-col justify-center'>
                     <div className="w-28 rounded-full">
                         <img src={brewer.img} />

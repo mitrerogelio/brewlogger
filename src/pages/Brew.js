@@ -1,8 +1,9 @@
 import ChildPage from "../components/ChildLayout"
-import { useParams } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 
-export const Brew = (props) => {
-  // const {brewer} = useParams()
+export const Brew = () => {
+  const { state: {data} } = useLocation()
+  console.log(data)
 
   return (
     <ChildPage>
@@ -10,15 +11,15 @@ export const Brew = (props) => {
         <article className="card card-compact w-96 bg-neutral shadow-xl justify-center p-12">
           <div className="avatar flex justify-center m-10 w-3/4">
             <div className="avatar rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="" alt="deez" />
+            <img src={data.img} alt="deez" />
             </div>
           </div>
           <div className="card-body">
-            <h2 className="card-title">{props.exampleprop}</h2>
+            <h2 className="card-title">{data.name}</h2>
             <p>Easy to brew and super consistent, the French Press is very reliable. Its classic and well-engineered design hasn’t changed much since its invention in 1929, and it’s perfect for making multiple cups of heavy-bodied coffee in 4 minutes. Learn how to use the French Press to brew incredible-tasting coffee below.</p>
           </div>
           <section className="flex flex-col items-center my-5">
-            <label htmlFor="coffee-dose" className="self-start mb-2">Coffee (grams): 50</label>
+            <label htmlFor="coffee-dose" className="self-start mb-2">Coffee (grams): {data.dose}</label>
             <input type="range" id="coffee-dose" min="0" max="100" defaultValue='10' className="range" step="10" />
             <div className="w-full flex justify-between text-xs px-2 pointer-cursor">
               <span>|</span>
