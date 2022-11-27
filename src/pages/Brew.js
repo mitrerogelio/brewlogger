@@ -35,20 +35,17 @@ export const Brew = () => {
 		console.log(`The multiple is now ${brewer.multiple}`)
 	}, [brewer])
 
-	const updateBrew = brewValue => {
-		const newBrew = { ...brewer, brewValue }
-		setBrewer(newBrew)
-	}
-
 	const onOptionChangeHandler = event => {
 		const multiple = parseInt(event.target.value.substring(2), 10)
-		updateBrew(multiple)
+		const newBrew = { ...brewer, multiple }
+		setBrewer(newBrew)
 	}
 
 	// Slider Logic
 	const sliderEventHandler = event => {
-		const dose = event.target.value
-		updateBrew(dose)
+		const dose = parseInt(event.target.value.substring(0), 10)
+		const newBrew = { ...brewer, dose }
+		setBrewer(newBrew)
 	}
 
 	const { img, name, description, dose, multiple } = brewer
