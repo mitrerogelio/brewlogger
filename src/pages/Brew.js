@@ -1,9 +1,29 @@
 import ChildPage from "../components/ChildLayout"
 import { useLocation } from "react-router-dom"
+import { useRef } from "react"
 
 export const Brew = () => {
+  // Retrieve brewer obj from <Brewmethods />
   const { state: {data} } = useLocation()
-  console.log(data)
+
+  // Store brewer data as ref
+  const ref = useRef({data})
+  // console.log(ref)
+
+  // Dropdown Options
+  const ratios = ['1:7','1:8','1:9','1:10','1:11','1:12','1:13','1:14','1:15','1:16','1:17','1:18','1:19','1:20']
+  const onOptionChangeHandler = (event) => {
+    // console.log("User Selected Value - ", event.target.value)
+    ref.current.data.multiple = event.target.value.substring(2)
+    console.log(`The multiple is now ${ref.current.data.multiple}`)
+  }
+
+  // Slider Logic
+  const sliderEventHandler = (event) => {
+    ref.current.data.dose = event.target.value
+    console.log(`The dose is now ${ref.current.data.dose}`)
+    return ref.current.data.dose
+  }
 
   return (
     <ChildPage>
@@ -16,44 +36,29 @@ export const Brew = () => {
           </div>
           <div className="card-body">
             <h2 className="card-title">{data.name}</h2>
-            <p>Easy to brew and super consistent, the French Press is very reliable. Its classic and well-engineered design hasn’t changed much since its invention in 1929, and it’s perfect for making multiple cups of heavy-bodied coffee in 4 minutes. Learn how to use the French Press to brew incredible-tasting coffee below.</p>
+            <p>{data.description}</p>
           </div>
+
+          {/* Brew Form */}
+          <select className="select select-primary w-full max-w-xs" onChange={onOptionChangeHandler}>
+            <option>Brew Ratio:</option>
+              {
+                ratios.map((ratio, index) => {
+                  return <option key={index}>{ratio}</option>
+                })
+              }
+          </select>
+
           <section className="flex flex-col items-center my-5">
-            <label htmlFor="coffee-dose" className="self-start mb-2">Coffee (grams): {data.dose}</label>
-            <input type="range" id="coffee-dose" min="0" max="100" defaultValue='10' className="range" step="10" />
-            <div className="w-full flex justify-between text-xs px-2 pointer-cursor">
-              <span>|</span>
-              <span>|</span>
-              <span>|</span>
-              <span>|</span>
-              <span>|</span>
-            </div>
+            <label htmlFor="coffee-dose" className="self-start mb-2">Coffee (grams): {ref.current.data.dose}</label>
+            <input type="range" id="coffee-dose" min="10" max="50" defaultValue={ref.current.data.dose} className="range" step="5" onChange={sliderEventHandler} />
+
           </section>
           <section className="flex flex-col items-center  my-5">
             <div className="w-full">
-              <label htmlFor="water-dose" className="self-start mb-2">Water (mL/grams)</label>
-              <input id="water-dose" type="range" min="0" max="100" defaultValue="40" className="range" />
+              <p>Water Amount: <span className="text-primary">{ref.current.data.dose * ref.current.data.multiple}</span>(mL/grams)</p>
             </div>
           </section>
-          <select className="select select-primary w-full max-w-xs">
-            <option>Brew Ratio</option>
-            <option>1:5</option>
-            <option>1:6</option>
-            <option>1:7</option>
-            <option>1:8</option>
-            <option>1:9</option>
-            <option>1:10</option>
-            <option>1:11</option>
-            <option>1:12</option>
-            <option>1:13</option>
-            <option>1:14</option>
-            <option>1:15</option>
-            <option>1:16</option>
-            <option>1:17</option>
-            <option>1:18</option>
-            <option>1:19</option>
-            <option>1:20</option>
-          </select>
         </article>
       </main>
     </ChildPage>
