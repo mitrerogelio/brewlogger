@@ -1,4 +1,5 @@
 import ChildPage from '../components/ChildLayout'
+import Description from '../components/Description'
 import { useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
@@ -7,7 +8,6 @@ export const Brew = () => {
 	const {
 		state: { data },
 	} = useLocation()
-	// console.log(data)
 
 	// Obj to state
 	const [brewer, setBrewer] = useState({ ...data })
@@ -54,16 +54,7 @@ export const Brew = () => {
 			<main className='flex flex-col justify-center align-center p-12'>
 				<article className='card card-compact w-96 bg-neutral shadow-xl justify-center p-12'>
 					<div className='avatar flex justify-center m-10 w-3/4'>
-						<div className='avatar rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
-							<img
-								src={img}
-								alt='deez'
-							/>
-						</div>
-					</div>
-					<div className='card-body'>
-						<h2 className='card-title'>{name}</h2>
-						<p>{description}</p>
+						<Description info={[name, img, description]} />
 					</div>
 
 					{/* Brew Form */}
