@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 
 export const Settings = () => {
+
   return (
     <section>
       <ChildNav />
