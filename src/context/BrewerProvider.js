@@ -22,8 +22,6 @@ export const BrewerProvider = props => {
         console.log('Component Rendered')
     }, [] )
 
-    console.log(devices)
-
     return (
         <BrewerContext.Provider value={[devices, setDevices]}>
             {props.children}

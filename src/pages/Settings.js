@@ -1,12 +1,9 @@
 import ChildNav from '../components/ChildNav'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { BrewerProvider } from '../context/BrewerProvider'
 
 export const Settings = () => {
-  const [devices, setDevices] = useContext(BrewerProvider)
-  console.log(devices)
+
   return (
     <section>
       <ChildNav />
