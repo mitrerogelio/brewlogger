@@ -5,14 +5,15 @@ import { collection, getDocs } from '@firebase/firestore'
 const Log = () => {
   const [logs, setLogs] = useState([])
   
-    const logsCollectionReference = collection(db, 'brewers')
-    useEffect(() => {
-        const getLogs = async () => {
-        const data = await getDocs(logsCollectionReference)
-        setLogs(data.docs.map((doc) => ({...doc.data(), id: doc.id })))
-        }
-        getLogs()
-    }, [] )
+  const logsCollectionReference = collection(db, 'brewers')
+  
+  useEffect(() => {
+      const getLogs = async () => {
+      const data = await getDocs(logsCollectionReference)
+      setLogs(data.docs.map((doc) => ({...doc.data(), id: doc.id })))
+      }
+      getLogs()
+  }, )
 
   return (
     logs.map((log, key) => (

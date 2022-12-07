@@ -19,7 +19,7 @@ export const BrewerProvider = props => {
         }
         getBrewers()
 
-        console.log('Component Rendered')
+        console.log('Component Rendered -BrewerProvider.js')
     }, [] )
 
     return (
