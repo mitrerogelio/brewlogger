@@ -1,12 +1,15 @@
 import ChildPage from '../components/ChildLayout'
 import Description from '../components/Description'
 import BrewForm from '../components/BrewForm'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 export const Brew = () => {
+	// const { brewer } = useParams()
+
 	// Define Current Brewer
-	
+	// const { state: { data } } = useLocation()
+	// console.log(data)
 
 	return (
 		<ChildPage>
@@ -15,7 +18,6 @@ export const Brew = () => {
 					<div className='avatar flex justify-center m-10 w-3/4'>
 						{/* <Description /> */}
 					</div>
-
 					<BrewForm />
 				</article>
 			</main>

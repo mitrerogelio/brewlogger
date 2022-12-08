@@ -5,7 +5,7 @@ const ChildPage = ({children}) => {
   return (
     <section>
       <ChildNav />
-      {children}
+        {children}
       <Footer />
     </section>
   )
