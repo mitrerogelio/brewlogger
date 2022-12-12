@@ -12,6 +12,7 @@ export const BrewerProvider = props => {
 
     // Fetch Brewers from Firebase
     const brewersCollectionReference = collection(db, 'brewers')
+    
     useEffect(() => {
         const getBrewers = async () => {
         const data = await getDocs(brewersCollectionReference)
@@ -19,7 +20,7 @@ export const BrewerProvider = props => {
         }
         getBrewers()
 
-        console.log('Component Rendered')
+        console.log('Component Rendered -BrewerProvider.js')
     }, [] )
 
     return (
