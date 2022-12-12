@@ -13,7 +13,7 @@ const Log = () => {
       setLogs(data.docs.map((doc) => ({...doc.data(), id: doc.id })))
       }
       getLogs()
-  }, )
+  }, [] )
 
   return (
     logs.map((log, key) => (
