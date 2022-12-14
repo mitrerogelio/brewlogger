@@ -7,9 +7,8 @@ const Brewmethods = () => {
     
     return (
         devices.map((brewer, key) => (
-            <Link to={`/brew/${brewer.id}`} key={key} state={ devices[key] } 
+            <Link to={`/brew/${brewer.id}`} key={key} state={ {data: devices[key]} } 
             className='cursor-pointer'>
-                {console.log(devices[key])}
                 <article className='avatar h-32 m-3 flex flex-col justify-center'>
                     <div className="w-28 rounded-full">
                         <img src={brewer.img} />

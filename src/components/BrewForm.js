@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const BrewForm = () => {
+const BrewForm = ({brewer}) => {
 
     // Ratio State
     const [multiple, setMultiple] = useState(16)
