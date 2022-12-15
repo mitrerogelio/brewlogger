@@ -3,8 +3,8 @@ import { useState, useEffect } from "react"
 const BrewForm = ({brewer}) => {
 
     // Ratio State
-    const [multiple, setMultiple] = useState(16)
-    const [dose, setDose] = useState(20)
+    const [multiple, setMultiple] = useState(brewer.multiple)
+    const [dose, setDose] = useState(brewer.dose)
 
     useEffect(() => {
 		console.log(`The multiple is now ${multiple} -BrewForm.js`)
@@ -41,18 +41,18 @@ const BrewForm = ({brewer}) => {
 	]
 
     return (
-    <form>
-        <select className='select select-primary w-full max-w-xs' onChange={onOptionChangeHandler}>
-        <option>Brew Ratio:</option>
-            {ratios.map((ratio, index) => {
-            return <option key={index}>{ratio}</option>
-            })}
+    <form className="my-10">
+        <select className='select select-warning bg-transparent w-full max-w-xs' onChange={onOptionChangeHandler}>
+            <option>Brew Ratio:</option>
+                {ratios.map((ratio, index) => {
+                return <option key={index}>{ratio}</option>
+                })}
 	    </select>
 
         <section className='flex flex-col items-center my-5'>
             <label
                 htmlFor='coffee-dose'
-                className='self-start mb-2'
+                className='self-start mb-2 text-l'
             >
                 Coffee (grams): {dose}g
             </label>
@@ -73,6 +73,16 @@ const BrewForm = ({brewer}) => {
                     <span className='text-primary'>{multiple * dose}</span>
                     (mL/grams)
                 </p>
+            </div>
+        </section>
+        <section className="">
+            <h3 className="text-xl">Rating</h3>
+            <div className="rating flex flex-row justify-center">
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" defaultChecked/>
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
             </div>
         </section>
     </form>
