@@ -1,8 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
+import {addDoc} from 'firebase/firestore'
+import { logsCollecionReference } from '../context/LogsProvider'
+
 
 const BrewForm = ({brewer}) => {
+    // Some fields (rating, grind, etc) are unused in MVP
 
-    // Ratio State
+    // Field States
     const [multiple, setMultiple] = useState(brewer.multiple)
     const [dose, setDose] = useState(brewer.dose)
 
@@ -40,8 +44,16 @@ const BrewForm = ({brewer}) => {
 		'1:20',
 	]
 
+    // Create Log ❤️
+    const createLog = async (e) => {
+        e.preventDefault()
+        await addDoc(logsCollecionReference, { multiple: multiple, dose: dose } )
+        
+    }
+
+
     return (
-    <form className="my-10">
+    <form className="my-5" onSubmit={createLog}>
         <select className='select select-warning bg-transparent w-full max-w-xs' onChange={onOptionChangeHandler}>
             <option>Brew Ratio:</option>
                 {ratios.map((ratio, index) => {
@@ -66,24 +78,13 @@ const BrewForm = ({brewer}) => {
                 step='5'
                 onChange={sliderEventHandler}
             />
-        </section>
-        <section className='flex flex-col items-center  my-5'>
-            <div className='w-full'>
+            <div className='w-full mt-8'>
                 <p>Water Amount:{' '}
                     <span className='text-primary'>{multiple * dose}</span>
                     (mL/grams)
                 </p>
             </div>
-        </section>
-        <section className="">
-            <h3 className="text-xl">Rating</h3>
-            <div className="rating flex flex-row justify-center">
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" defaultChecked/>
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-            </div>
+            <button className="btn btn-primary mt-10" type='submit'>Create Log</button>
         </section>
     </form>
     )

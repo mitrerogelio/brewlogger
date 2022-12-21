@@ -11,7 +11,7 @@ const Brewmethods = () => {
             className='cursor-pointer'>
                 <article className='avatar h-32 m-3 flex flex-col justify-center'>
                     <div className="w-28 rounded-full">
-                        <img src={brewer.img} />
+                        <img src={brewer.img} alt={`Closeup of ${brewer.name}`} />
                     </div>
                     <p className='text-center'>{brewer.name}</p>
                 </article>
