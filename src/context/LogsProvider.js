@@ -6,7 +6,7 @@ import { collection, getDocs } from '@firebase/firestore'
 export const LogsContext = createContext()
 
 // Fetch Logs from Firebase
-export const logsCollecionReference = collection(db, 'logs')
+export const logsCollectionReference = collection(db, 'logs')
 
 export const LogsProvider = props => {
 
@@ -15,7 +15,7 @@ export const LogsProvider = props => {
     
     useEffect(() => {
         const getLogs = async () => {
-        const data = await getDocs(logsCollecionReference)
+        const data = await getDocs(logsCollectionReference)
         setLogs(data.docs.map((doc) => ({...doc.data(), id: doc.id })))
         }
         getLogs()
