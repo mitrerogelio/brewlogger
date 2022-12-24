@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useState, useRef } from 'react'
 import {addDoc} from 'firebase/firestore'
 import { logsCollectionReference } from '../context/LogsProvider'
 
 
 const BrewForm = ({brewer}) => {
-    // Some fields (rating, grind, etc) are unused in MVP
-
+    
     // Field States
     const [multiple, setMultiple] = useState(brewer.multiple)
     const [dose, setDose] = useState(brewer.dose)
@@ -30,7 +30,13 @@ const BrewForm = ({brewer}) => {
 
     // Dropdown Options
 	const ratios = [
-		'1:7',
+		'1:1',
+        '1:2',
+        '1:3',
+        '1:4',
+        '1:5',
+        '1:6',
+        '1:7',
 		'1:8',
 		'1:9',
 		'1:10',
@@ -51,14 +57,21 @@ const BrewForm = ({brewer}) => {
         setRating(e.target.value)
     }
 
+    // Button Click Logic
+    const navigate = useNavigate()
+    const formRef = useRef(null)
+
     // Create Log ❤️
     const createLog = async (e) => {
         e.preventDefault()
-        await addDoc(logsCollectionReference, { vehicle, image: brewerImg, coffee, multiple, dose, roast, grind, rating } )
+        await addDoc(logsCollectionReference, { vehicle, image: brewerImg, coffee, multiple, dose, roast, grind, rating })
+        
+        formRef.current.dispatchEvent(new Event('submit', { cancelable: true }))
+        navigate('/')
     }
 
     return (
-        <form className="my-5" onSubmit={createLog}>
+        <form className="my-5" onSubmit={createLog} ref={formRef}>
             <input type="text" placeholder="Your coffee" className="input input-sm input-bordered w-full max-w-xs mb-5"
             onChange={(event) => {setCoffee(event.target.value)}} />
 
