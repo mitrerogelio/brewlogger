@@ -1,18 +1,13 @@
-import { useState, useEffect } from 'react'
-import {db} from '../firebase/firebase-config'
-import { collection, getDocs } from '@firebase/firestore'
+import { useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { LogsContext } from '../context/LogsProvider'
 
 const Log = () => {
-  const [logs, setLogs] = useState([])
-  
-  const logsCollectionReference = collection(db, 'brewers')
+  // Fetch Logs from context
+  const [logs] = useContext(LogsContext)
   
   useEffect(() => {
-      const getLogs = async () => {
-      const data = await getDocs(logsCollectionReference)
-      setLogs(data.docs.map((doc) => ({...doc.data(), id: doc.id })))
-      }
-      getLogs()
+      console.log('Logs.js Component Rendered')
   }, [] )
 
   return (
@@ -20,9 +15,9 @@ const Log = () => {
       <article className="stats bg-primary text-primary-content carousel-item" key={key}>
         <div className="stat">
             <h4 className="stat-title">Brew Method:</h4>
-            <p className="stat-value">{log.name}</p>
+            <p className="stat-value">{log.vehicle}</p>
             <div className="stat-actions">
-                <button className="btn btn-sm">Edit Log</button>
+                <Link to={`/log/${key}`} state={ {data: logs[key]} } className="btn btn-sm">Edit Log</Link>
             </div>
         </div>
         <div className="stat">
