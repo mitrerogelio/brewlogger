@@ -1,16 +1,21 @@
-import React from 'react'
-import { brewers } from "../data/data"
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { BrewerContext } from '../context/BrewerProvider'
 
 const Brewmethods = () => {
+    const [devices] = useContext(BrewerContext)
     
     return (
-        brewers.map((brewer, key) => (
-            <article className='avatar h-32 m-3 flex flex-col justify-center' key={key}>
-                <div className="w-28 rounded-full">
-                    <img src={brewer.img} />
-                </div>
-                <p className='text-center'>{brewer.name}</p>
-            </article>
+        devices.map((brewer, key) => (
+            <Link to={`/brew/${brewer.id}`} key={key} state={ {data: devices[key]} } 
+            className='cursor-pointer'>
+                <article className='avatar h-32 m-3 flex flex-col justify-center'>
+                    <div className="w-28 rounded-full">
+                        <img src={brewer.img} alt={`Closeup of ${brewer.name}`} />
+                    </div>
+                    <p className='text-center'>{brewer.name}</p>
+                </article>
+            </Link>
         ))
     )
 }
