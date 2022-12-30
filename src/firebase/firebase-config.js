@@ -1,10 +1,9 @@
-import { initializeApp } from '@firebase/app'
-import '@firebase/firestore'
-import { getAuth } from '@firebase/auth'
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
 import { getFirestore } from '@firebase/firestore'
 
 const {
-    VITE_FIRE_BASE_KEY,
+    VITE_API_KEY,
     VITE_AUTH_DOMAIN,
     VITE_PROJECT_ID,
     VITE_STORAGE_BUCKET,
@@ -14,7 +13,7 @@ const {
 } = import.meta.env
 
 const config = {
-    apiKey: `${VITE_FIRE_BASE_KEY}`,
+    apiKey: `${VITE_API_KEY}`,
     authDomain: `${VITE_AUTH_DOMAIN}`,
     projectId: `${VITE_PROJECT_ID}`,
     storageBucket: `${VITE_STORAGE_BUCKET}`,

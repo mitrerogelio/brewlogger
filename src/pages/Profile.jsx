@@ -1,70 +1,106 @@
-import ChildPage from "../components/ChildLayout"
+import { auth } from '../firebase/firebase-config'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { useState, useEffect } from 'react'
+import { SignIn } from '../components/SignIn'
+import { ProfileLayout } from '../components/ProfileLayout'
+import { CreateAccount } from '../components/CreateAccount'
 
+export const Profile = ({children}) => {
+  const [user, setUser] = useState({})
+  const [loginEmail, setLoginEmail] = useState('')
+  const [loginPassword, setLoginPassword] = useState('')
+  const [registerEmail, setRegisterEmail] = useState('')
+  const [registerPassword, setRegisterPassword] = useState('')
 
-export const Profile = () => {
+  const [form, setForm] = useState(true)
+
+  // For Child Components
+  const updateLoginEmail = (event) => {
+    setLoginEmail(event.target.value)
+  }
+  const updateLoginPassword = (event) => {
+    setLoginPassword(event.target.value)
+  }
+  const updateRegEmail = (event) => {
+    setRegisterEmail(event.target.value)
+  }
+  const updateRegPassword = (event) => {
+    setRegisterPassword(event.target.value)
+  }
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser)
+    })
+    return () => unsubscribe()
+  }, [])
+
+  const register = async (event) => {
+    event.preventDefault()
+    try {
+      const newUser = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+    } catch (error) {
+        console.log(error)
+      }
+  }
+
+  const login = async (event) => {
+    event.preventDefault()
+    try {
+      signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const logout = async (event) => {
+    event.preventDefault()
+    await signOut(auth)
+  }
+
+  const formSwap = () => {
+    setForm(!form)
+  }
 
   return (
-    <ChildPage>
-      <section className="hero bg-base-300">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-          </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input type="text" placeholder="email" className="input input-bordered" />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input type="text" placeholder="password" className="input input-bordered" />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-              </div>
+    <ProfileLayout>
+      <div className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 items-center'>
+        {user ? (
+            <div className='card-body'>
+              <p className='text-2xl text-center h-24'>Welcome, <span className='text-accent-content'>{user.email}</span></p>
+              <button onClick={logout} className='btn btn-primary'>Log Out</button>
             </div>
-          </div>
-        </div>
-      </section>
-      <section className="hero bg-base-300">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Register now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-          </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input type="text" placeholder="email" className="input input-bordered" />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input type="text" placeholder="password" className="input input-bordered" />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Create Account</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </ChildPage>
+        ) : (
+          <section className='w-full'>
+            {form ? 
+            <SignIn
+              onSubmit={login}
+              email={loginEmail}
+              updateLoginEmail={updateLoginEmail}
+              password={loginPassword}
+              updateLoginPassword={updateLoginPassword}
+            /> 
+            : 
+            <CreateAccount
+              onSubmit={register}
+              email={registerEmail}
+              updateRegEmail={updateRegEmail}
+              password={registerPassword}
+              updateRegPassword={updateRegPassword}
+              />
+            }
+            
+            <section className='w-full flex flex-col justify-evenly items-center h-36 bg-base-300'>
+              <h3 className='text-xl text-secondary-content'>New Here?</h3>
+              <button 
+              className='btn btn-secondary w-3/5'
+              onClick={formSwap}
+              >Create Account</button>
+            </section>
+
+          </section>
+        )}
+      </div>
+    </ProfileLayout>
   )
 }
