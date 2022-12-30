@@ -11,7 +11,7 @@ const Footer = () => {
                 </div>
             </div> 
             <div>
-                <p>Made by <a className='text-link link-primary' href='https://github.com/mitrerogelio' target="_blank">mitrerogelio</a> with React, TailwindCSS, and Firebase.</p>
+                <p>Made by <a className='text-link link-primary' href='https://www.rogeliomitre.com' target="_blank">mitrerogelio</a> with React, TailwindCSS, and Firebase.</p>
             </div>
         </footer>
   )
