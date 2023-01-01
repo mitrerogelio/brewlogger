@@ -11,5 +11,5 @@ export const Home = () => {
         </nav>
         <Record />
       </Layout>
-  );
+  )
 }

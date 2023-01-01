@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useRef } from 'react'
-import {addDoc} from 'firebase/firestore'
-import { logsCollectionReference } from '../context/LogsProvider'
+import { collection, addDoc } from '@firebase/firestore'
+import {db} from '../firebase/firebase-config'
 
 
 const BrewForm = ({brewer}) => {
@@ -60,6 +60,9 @@ const BrewForm = ({brewer}) => {
     // Button Click Logic
     const navigate = useNavigate()
     const formRef = useRef(null)
+
+    // 'logs' Firebase Collection Reference
+    const logsCollectionReference = collection(db, 'logs')
 
     // Create Log ❤️
     const createLog = async (e) => {
