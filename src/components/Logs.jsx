@@ -6,7 +6,6 @@ import { collection, getDocs } from '@firebase/firestore'
 const Log = () => {
   // Create State Obj
   const [logs, setLogs] = useState([])
-  const count = 0
 
   // Fetch Logs from Firebase
   const logsCollectionReference = collection(db, 'logs')
@@ -26,7 +25,7 @@ const Log = () => {
       getLogs()
       console.log('useEffect in Logs.jsx triggered')
     }
-  }, [count])
+  }, [])
 
   return logs.map((log, key) => (
     <article

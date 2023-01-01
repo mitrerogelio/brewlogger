@@ -5,7 +5,6 @@ import { db } from '../firebase/firebase-config'
 
 const Brewmethods = () => {
   const [devices, setDevices] = useState([])
-  const count = 0
 
   const brewersCollectionReference = collection(db, 'brewers')
 
@@ -24,7 +23,7 @@ const Brewmethods = () => {
       getBrewers()
       console.log('useEffect in Brewmethods.jsx triggered')
     }
-  }, [count])
+  }, [])
 
   return devices.map((brewer, key) => (
     <Link
