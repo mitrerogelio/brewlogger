@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { auth } from '../firebase/firebase-config'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { useState, useEffect } from 'react'
@@ -13,6 +14,9 @@ export const Profile = ({children}) => {
   const [registerPassword, setRegisterPassword] = useState('')
 
   const [form, setForm] = useState(true)
+
+  // Navigate
+  const navigate = useNavigate()
 
   // For Child Components
   const updateLoginEmail = (event) => {
@@ -56,6 +60,7 @@ export const Profile = ({children}) => {
   const logout = async (event) => {
     event.preventDefault()
     await signOut(auth)
+    navigate('/')
   }
 
   const formSwap = () => {
