@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useRef } from 'react'
 import { collection, addDoc } from '@firebase/firestore'
 import {db} from '../firebase/firebase-config'
+import { auth } from '../firebase/firebase-config'
 
 
 const BrewForm = ({brewer}) => {
@@ -15,6 +16,7 @@ const BrewForm = ({brewer}) => {
     const [rating, setRating] = useState(5)
     const vehicle = brewer.name
     const brewerImg = brewer.img
+    const currentUser = auth.currentUser
     
     // Brew Ratio Logic
     const onOptionChangeHandler = event => {
@@ -61,16 +63,18 @@ const BrewForm = ({brewer}) => {
     const navigate = useNavigate()
     const formRef = useRef(null)
 
-    // 'logs' Firebase Collection Reference
-    const logsCollectionReference = collection(db, 'logs')
-
     // Create Log ❤️
     const createLog = async (e) => {
         e.preventDefault()
-        await addDoc(logsCollectionReference, { vehicle, image: brewerImg, coffee, multiple, dose, roast, grind, rating })
-        
-        formRef.current.dispatchEvent(new Event('submit', { cancelable: true }))
-        navigate('/')
+        if(currentUser) {
+            const logsCollectionReference = collection(db, 'logs')
+            await addDoc(logsCollectionReference, { vehicle, image: brewerImg, coffee, multiple, dose, roast, grind, rating, uid: auth.currentUser.uid })
+            formRef.current.dispatchEvent(new Event('submit', { cancelable: true }))
+            navigate('/')
+        }
+        else {
+            console.log("User is not authenticated")
+        }
     }
 
     return (
