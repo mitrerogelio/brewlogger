@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase/firebase-config'
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 export const Nav = () => {
@@ -17,9 +18,13 @@ export const Nav = () => {
     return () => unsubscribe()
   }, [])
 
+    // Navigate
+  const navigate = useNavigate()
+
   const logout = async (event) => {
     event.preventDefault()
     await signOut(auth)
+    navigate('/profile')
   }
 
   return (

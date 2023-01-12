@@ -60,7 +60,7 @@ export const Profile = ({children}) => {
   const logout = async (event) => {
     event.preventDefault()
     await signOut(auth)
-    navigate('/')
+    navigate('/profile')
   }
 
   const formSwap = () => {
