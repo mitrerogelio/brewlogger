@@ -21,7 +21,6 @@ const Brewmethods = () => {
         setDevices(dataRef.current)
       }
       getBrewers()
-      console.log('useEffect in Brewmethods.jsx triggered')
     }
   }, [])
 

@@ -25,11 +25,10 @@ const Log = () => {
         setLoading(false)
     }
     getLogs()
-    console.log('useEffect in Logs.jsx triggered')
 }, [])
 
   if (!logs.length) {
-    return <p>No logs found</p>
+    return <p className='m-auto text-secondary-content'>No logs found</p>
   }
 
   return logs.map((log, key) => (

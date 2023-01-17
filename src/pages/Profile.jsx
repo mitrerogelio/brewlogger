@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../firebase/firebase-config'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, deleteUser } from 'firebase/auth'
 import { useState, useEffect } from 'react'
 import { SignIn } from '../components/SignIn'
 import { ProfileLayout } from '../components/ProfileLayout'
@@ -63,6 +63,12 @@ export const Profile = ({children}) => {
     navigate('/profile')
   }
 
+  const deleteAccount = async (event) => {
+    event.preventDefault()
+    await deleteUser(user)
+    navigate('/')
+  }
+
   const formSwap = () => {
     setForm(!form)
   }
@@ -74,24 +80,25 @@ export const Profile = ({children}) => {
             <div className='card-body'>
               <p className='text-2xl text-center h-24'>Welcome, <span className='text-accent-content'>{user.email}</span></p>
               <button onClick={logout} className='btn btn-primary'>Log Out</button>
+              <button onClick={deleteAccount} className='btn btn-error'>Delete Account</button>
             </div>
         ) : (
           <section className='w-full'>
             {form ? 
-            <SignIn
-              onSubmit={login}
-              email={loginEmail}
-              updateLoginEmail={updateLoginEmail}
-              password={loginPassword}
-              updateLoginPassword={updateLoginPassword}
-            /> 
-            : 
-            <CreateAccount
-              onSubmit={register}
-              email={registerEmail}
-              updateRegEmail={updateRegEmail}
-              password={registerPassword}
-              updateRegPassword={updateRegPassword}
+              <SignIn
+                onSubmit={login}
+                email={loginEmail}
+                updateLoginEmail={updateLoginEmail}
+                password={loginPassword}
+                updateLoginPassword={updateLoginPassword}
+              /> 
+              : 
+              <CreateAccount
+                onSubmit={register}
+                email={registerEmail}
+                updateRegEmail={updateRegEmail}
+                password={registerPassword}
+                updateRegPassword={updateRegPassword}
               />
             }
             
