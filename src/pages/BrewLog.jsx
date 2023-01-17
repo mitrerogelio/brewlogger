@@ -8,10 +8,7 @@ export const BrewLog = () => {
     
     // Current Log
     const { state: { data } } = useLocation()
-    
-    const location = useLocation()
-    // console.log(location)
-   
+       
     // Field States
     const [multiple, setMultiple] = useState(data.multiple)
     const [dose, setDose] = useState(data.dose)
