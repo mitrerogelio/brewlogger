@@ -1,4 +1,4 @@
-import ChildPage from '../components/ChildLayout'
+import ChildPage from './ChildLayout'
 
 export const ProfileLayout = ({children}) => {
 

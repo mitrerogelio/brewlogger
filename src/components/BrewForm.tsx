@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom'
-import { useState, useRef } from 'react'
+import { useState, useRef, SetStateAction } from 'react'
 import { collection, addDoc } from '@firebase/firestore'
-import {db} from '../firebase/firebase-config'
-import { auth } from '../firebase/firebase-config'
+import * as firebaseConfig from '../firebase/firebase-config'
+import * as firebaseConfig_1 from '../firebase/firebase-config'
+import React from 'react'
 
 
 const BrewForm = ({brewer}) => {
@@ -16,16 +17,16 @@ const BrewForm = ({brewer}) => {
     const [rating, setRating] = useState(5)
     const vehicle = brewer.name
     const brewerImg = brewer.img
-    const currentUser = auth.currentUser
+    const currentUser = firebaseConfig_1.auth.currentUser
     
     // Brew Ratio Logic
-    const onOptionChangeHandler = event => {
+    const onOptionChangeHandler = (event: { target: { value: string } }) => {
 		const multiple = parseInt(event.target.value.substring(2), 10)
 		setMultiple(multiple)
 	}
 
 	// Slider Logic
-	const sliderEventHandler = event => {
+	const sliderEventHandler = (event: { target: { value: string } }) => {
 		const dose = parseInt(event.target.value.substring(0), 10)
 		setDose(dose)
 	}
@@ -55,7 +56,7 @@ const BrewForm = ({brewer}) => {
 	]
 
     // Rating Logic
-    const onRadio = e => {
+    const onRadio = (e: { target: { value: SetStateAction<number> } }) => {
         setRating(e.target.value)
     }
 
@@ -64,11 +65,11 @@ const BrewForm = ({brewer}) => {
     const formRef = useRef(null)
 
     // Create Log ❤️
-    const createLog = async (e) => {
+    const createLog = async (e: { preventDefault: () => void }) => {
         e.preventDefault()
         if(currentUser) {
-            const logsCollectionReference = collection(db, 'logs')
-            await addDoc(logsCollectionReference, { vehicle, image: brewerImg, coffee, multiple, dose, roast, grind, rating, uid: auth.currentUser.uid })
+            const logsCollectionReference = collection(firebaseConfig.db, 'logs')
+            await addDoc(logsCollectionReference, { vehicle, image: brewerImg, coffee, multiple, dose, roast, grind, rating, uid: firebaseConfig_1.auth.currentUser.uid })
             formRef.current.dispatchEvent(new Event('submit', { cancelable: true }))
             navigate('/')
         }
