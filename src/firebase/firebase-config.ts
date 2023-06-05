@@ -20,7 +20,7 @@ const {
     VITE_MESSAGING_SENDER_ID,
     VITE_APP_ID,
     VITE_MEASUREMENT_ID
-} = import.meta.env;
+} = process.env;
 
 const config: FirebaseConfig = {
     apiKey: `${VITE_API_KEY}`,
