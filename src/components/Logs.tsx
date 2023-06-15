@@ -1,62 +1,62 @@
-import { useEffect, useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import { db } from '../firebase/firebase-config'
-import { collection, getDocs, query, where } from '@firebase/firestore'
-import { auth } from '../firebase/firebase-config'
+import {Link} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {collection, getDocs} from '@firebase/firestore';
+import {db} from '../firebase/firebase-config';
 
-const Log = () => {
-  const [logs, setLogs] = useState([])
-  const [loading, setLoading] = useState(true)
-  const dataRef = useRef(null)
-  const logsRef = collection(db, 'logs')
-  const userId = auth.currentUser ? auth.currentUser.uid : null;
-  const queryRef = query(logsRef, where('uid', '==', userId))
-
-  useEffect(() => {
-    setLoading(true) // set loading state to true when the component mounts
-    const getLogs = async () => {
-        if (!auth.currentUser) return
-        const data = await getDocs(queryRef);
-        dataRef.current = data.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id
-        }))
-        setLogs(dataRef.current)
-        setLoading(false)
-    }
-    getLogs()
-}, [])
-
-  if (!logs.length) {
-    return <p className='m-auto text-secondary-content'>No logs found</p>
-  }
-
-  return logs.map((log, key) => (
-    <article
-      className='stats bg-primary text-primary-content carousel-item'
-      key={key}
-    >
-      <div className='stat'>
-        <h4 className='stat-title'>Brew Method:</h4>
-        <p className='stat-value'>{log.vehicle}</p>
-        <div className='stat-actions'>
-          <Link
-            to={`/log/${key}`}
-            state={{ data: logs[key] }}
-            className='btn btn-sm'
-          >
-            Edit Log
-          </Link>
-        </div>
-      </div>
-      <div className='stat'>
-        <h4 className='stat-title'>Dose</h4>
-        <p className='stat-value'>{log.dose}g</p>
-        <h4 className='stat-title'>Rating</h4>
-        <p className='stat-value'>{log.rating}</p>
-      </div>
-    </article>
-  ))
+interface ILog {
+    coffee: string;
+    dose: number;
+    grind: string;
+    image?: string;
+    multiple: number;
+    rating: number;
+    roast: string;
+    uid?: string;
+    id: string;
+    vehicle: string;
 }
 
-export default Log
+const Logs = () => {
+    const [logs, setLogs] = useState<ILog[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        const getLogs = async () => {
+            const querySnapshot = await getDocs(collection(db, 'logs'));
+            const logsData = querySnapshot.docs.map((doc) => ({
+                ...(doc.data() as ILog)
+            }));
+            setLogs((prevLogs) => [...prevLogs, ...logsData]);
+        };
+        getLogs();
+    }, []);
+
+    return logs.map((log: ILog, index) => (
+        <article
+            className='stats bg-primary text-primary-content carousel-item'
+            key={index}
+        >
+            <div className='stat'>
+                <h4 className='stat-title'>Brew Method:</h4>
+                <p className='stat-value'>{log.vehicle}</p>
+                <div className='stat-actions'>
+                    <Link
+                        to={`/log/${log.uid}`}
+                        state={{data: log.uid}}
+                        className='btn btn-sm'
+                    >
+                        Edit Log
+                    </Link>
+                </div>
+            </div>
+            <div className='stat'>
+                <h4 className='stat-title'>Dose</h4>
+                <p className='stat-value'>{log.dose}g</p>
+                <h4 className='stat-title'>Rating</h4>
+                <p className='stat-value'>{log.rating}</p>
+            </div>
+        </article>
+    ))
+}
+
+export default Logs

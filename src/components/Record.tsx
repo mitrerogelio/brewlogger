@@ -1,4 +1,5 @@
 import Logs from './Logs'
+import React from "react";
 
 const Record = () => {
   return (

@@ -1,15 +1,15 @@
 import Brewmethods from '../components/Brewmethods'
 import Record from '../components/Record'
 import Layout from '../components/Layout'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { auth } from '../firebase/firebase-config'
 
 export const Home = () => {
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-      setUser(currentUser)
+    const unsubscribe = auth.onAuthStateChanged((currentUser?) => {
+      setUser(currentUser!)
     })
     return () => unsubscribe()
   }, [])
