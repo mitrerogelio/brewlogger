@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ff786342-3c7a-4a3e-86c7-2545554d1374" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.brewlogger.dir/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BrewForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BrewForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Brewmethods.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Brewmethods.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ChildLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChildLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ChildNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChildNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateAccount.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateAccount.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Description.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Description.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Logs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Logs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProfileLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Brew.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Brew.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/BrewLog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/BrewLog.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/package-lock.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Brewmethods.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Logs.tsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectId" id="2QzrZPZ7kanB6YnYFzuKWkGEslo" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;types&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.3.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.3.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/rogelio/Documents/projects/brewlogger/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/rogelio/Documents/projects/brewlogger/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/rogelio/Library/Application Support/JetBrains/Rider2023.1/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/rogelio/Library/Application Support/JetBrains/Rider2023.1/resharper-host/SourcesCache&quot;,
+      &quot;/Users/rogelio/.local/share/Symbols/src&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff786342-3c7a-4a3e-86c7-2545554d1374" name="Changes" comment="" />
+      <created>1683947102363</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683947102363</updated>
+      <workItem from="1686367306933" duration="1310000" />
+      <workItem from="1686369023171" duration="1766000" />
+      <workItem from="1686793089313" duration="11704000" />
+      <workItem from="1686889002974" duration="15381000" />
+      <workItem from="1687486204427" duration="797000" />
+      <workItem from="1687489341119" duration="4764000" />
+      <workItem from="1687573489591" duration="22000" />
+    </task>
+    <task id="LOCAL-00001" summary="add .idea to .gitignore">
+      <created>1686368524893</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686368524893</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update Brewmethods.tsx, Logs.tsx in progress">
+      <created>1686804609082</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686804609082</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add rider settings">
+      <created>1686804663807</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686804663807</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="add .idea to .gitignore" />
+    <MESSAGE value="update Brewmethods.tsx, Logs.tsx in progress" />
+    <MESSAGE value="add rider settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="add rider settings" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
