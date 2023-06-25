@@ -4,7 +4,6 @@ import {collection, getDocs} from '@firebase/firestore';
 import {db} from '../firebase/firebase-config';
 
 interface IBrewer {
-    id: string;
     name: string;
     description: string;
     dose: number;
@@ -31,7 +30,7 @@ const Brewmethods = () => {
         <>
             {brewers.map((brewer: IBrewer, index) => (
                 <Link
-                    to={`/brew/${brewer.id}`}
+                    to={`/brew/${brewer.name}`}
                     state={{data: brewer}}
                     className="cursor-pointer"
                     key={index}

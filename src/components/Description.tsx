@@ -1,4 +1,5 @@
-
+import React from "react";
+// @ts-ignore
 const Description = ({brewer}) => {
     return (
         <>

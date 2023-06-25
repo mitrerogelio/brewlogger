@@ -1,7 +1,11 @@
 import ChildNav from './ChildNav'
 import Footer from './Footer'
+import React from "react";
 
-const ChildPage = ({children}) => {
+interface ChildrenProps {
+   children: React.ReactNode; 
+}
+const ChildPage = ({children}: ChildrenProps) => {
   return (
     <section>
       <ChildNav />

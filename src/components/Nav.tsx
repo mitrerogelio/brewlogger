@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase/firebase-config'
 import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export const Nav = () => {
   const [user, setUser] = useState(null)

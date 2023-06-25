@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom'
 import React from 'react'
 
 export const Brew = () => {
-	// Define Current Brewer
 	const { state: { data } } = useLocation()
 
 	return (

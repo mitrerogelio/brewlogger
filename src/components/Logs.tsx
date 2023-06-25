@@ -18,7 +18,7 @@ interface ILog {
 
 const Logs = () => {
     const [logs, setLogs] = useState<ILog[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    // const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const getLogs = async () => {
@@ -41,8 +41,8 @@ const Logs = () => {
                 <p className='stat-value'>{log.vehicle}</p>
                 <div className='stat-actions'>
                     <Link
-                        to={`/log/${log.uid}`}
-                        state={{data: log.uid}}
+                       to={`/log/${log.uid}`}
+                        state={{ data: log} }
                         className='btn btn-sm'
                     >
                         Edit Log

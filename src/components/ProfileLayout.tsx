@@ -1,6 +1,11 @@
 import ChildPage from './ChildLayout'
+import React from "react";
 
-export const ProfileLayout = ({children}) => {
+interface ChildrenProps {
+    children: React.ReactNode;
+}
+
+export const ProfileLayout = ({children}: ChildrenProps) => {
 
   return (
     <ChildPage>
